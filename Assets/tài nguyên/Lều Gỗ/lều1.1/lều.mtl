@@ -1,0 +1,65 @@
+# Blender 5.2.0 LTS MTL File: 'lều.blend'
+# www.blender.org
+
+newmtl Damaged_Concrete
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd C:/Concrete_Damaged_basecolor.jpg
+map_Pr C:/Concrete_Damaged_roughness.jpg
+map_Bump -bm 1.000000 C:/Concrete_Damaged_normalogl.jpg
+
+newmtl Damaged_and_Cracked_Concrete
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd C:/Concrete_DamagedCracked_basecolor.jpg
+map_Pr C:/Concrete_DamagedCracked_roughness.jpg
+map_Bump -bm 1.000000 C:/Concrete_DamagedCracked_normalogl.jpg
+
+newmtl Realistic_Wood_Grain
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+
+newmtl Stone_wall
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd C:/stone_basecolor_diffuse.jpg
+map_Ks C:/stone_specular.jpg
+map_Bump -bm 1.000000 C:/stone_normal_opengl.jpg
