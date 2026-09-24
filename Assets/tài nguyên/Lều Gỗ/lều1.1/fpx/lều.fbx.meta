@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 04548558d151e3c46b0abcfcd3cf24e8
+guid: 828c2211f40735f49b4566017f285cf8
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Damaged_Concrete
-    second: {fileID: 2100000, guid: 2ae122b477971bb44a80b92678821ab3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Damaged_and_Cracked_Concrete
-    second: {fileID: 2100000, guid: 8e490bc35d4fa2540b249fd6d8476937, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Realistic_Wood_Grain
-    second: {fileID: 2100000, guid: be4748be6193aca4dbc6ef760fe8adff, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stone_wall
-    second: {fileID: 2100000, guid: 1acd45f83e71ab84c90d18f5610e235e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
