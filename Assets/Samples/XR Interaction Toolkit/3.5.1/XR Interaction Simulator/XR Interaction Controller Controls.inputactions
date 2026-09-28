@@ -281,7 +281,7 @@
                 {
                     "name": "right",
                     "id": "7a178081-4cf4-4dc4-ae08-3448a76351e6",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/pageUp",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
