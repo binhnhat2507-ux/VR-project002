@@ -9,6 +9,7 @@ public class WaterSource : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [Tooltip("Assign the Main Camera under the player's XR Origin.")]
     [SerializeField] private Transform playerHead;
+    [SerializeField] private WaterBucket bucket;
 
     [Header("Drinking")]
     [SerializeField, Min(0.1f)] private float interactionDistance = 3f;
@@ -23,6 +24,8 @@ public class WaterSource : MonoBehaviour
 
     private void Start()
     {
+        // The prototype uses one bucket; tolerate an unassigned scene reference.
+        if (bucket == null) bucket = FindFirstObjectByType<WaterBucket>();
         if (interactionText != null)
             interactionText.raycastTarget = false;
 
@@ -40,11 +43,23 @@ public class WaterSource : MonoBehaviour
         {
             interactionText.enabled = nearby;
             if (nearby)
-                interactionText.text = drinkMessage;
+                interactionText.text = bucket != null && bucket.IsHeld
+                    ? drinkMessage + " | " + (bucket.HasWater ? "Xo da day" : "[Y] Muc nuoc vao xo")
+                    : drinkMessage;
         }
 
-        if (nearby && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
-            Drink();
+        if (!nearby || Keyboard.current == null) return;
+        if (Keyboard.current.eKey.wasPressedThisFrame) Drink();
+        if (Keyboard.current.yKey.wasPressedThisFrame) FillBucket();
+    }
+
+    public bool FillBucket()
+    {
+        if (!isActiveAndEnabled || Time.timeScale <= 0f || !IsPlayerNearby() ||
+            bucket == null || !bucket.IsHeld)
+            return false;
+
+        return bucket.Fill();
     }
 
     // Can also be called by an XR interaction event later.

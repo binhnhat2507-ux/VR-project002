@@ -4,9 +4,17 @@
 `PlayerStats.AddThirst(25)` khi người chơi đứng gần điểm uống và nhấn E.
 UI hiện có tự cập nhật. Không tự tạo Canvas hoặc thay đổi scene.
 
+Khi cầm xô rỗng ở gần điểm nước, bấm Y để múc đầy xô; thao tác này không
+tăng Thirst. E luôn uống trực tiếp, kể cả khi đang cầm xô. Khi xô đầy,
+HUD báo `Xo da day`. Gán ô Bucket hoặc để script tìm xô đầu tiên khi Start.
+Hàm public FillBucket() dùng cùng điều kiện khoảng cách, đang cầm và game
+không pause. Không cần sửa PlayerStats khi thêm thao tác XR sau này.
+
 Phím E trước đây trùng với Y Translate (đi lên) và chiều phải của Resting Hand
 Axis 2D trong XR Simulator. Hai binding này đã chuyển sang Page Up trong các
 Input Actions mẫu đang dùng; Q và các phím khác giữ nguyên. E dành cho uống nước.
+Menu Input Selection của XR Interaction Simulator chuyển từ Y sang U,
+để Y chỉ dùng cho múc nước.
 
 ## Thiết lập trong Unity (dừng Play trước)
 
@@ -16,6 +24,8 @@ Input Actions mẫu đang dùng; Q và các phím khác giữ nguyên. E dành c
 2. Add Component → Water Source.
 3. Kéo XR Origin có PlayerStats vào ô Player Stats.
 4. Kéo Main Camera dưới XR Origin vào ô Player Head.
+   Nếu đã tạo prefab xô bằng Tools → Survival → Create Water Bucket Prefab,
+   kéo instance WaterBucket trong scene vào ô Bucket.
 5. Giữ Interaction Distance = 3, Thirst Per Drink = 25, Drink Cooldown = 1.
    Khoảng cách là hình cầu 3 mét tính từ camera; chọn điểm để xem gizmo trong Scene.
    Không cần Rigidbody, Collider, XR Grab hay XR Simple Interactable cho phím E.
@@ -45,4 +55,4 @@ Input Actions mẫu đang dùng; Q và các phím khác giữ nguyên. E dành c
 Khoảng cách dùng Main Camera để hoạt động cả khi XR Simulator di chuyển đầu
 giả lập mà XR Origin không đổi vị trí. Chưa kiểm tra đường nhìn hay mô phỏng bơi:
 đặt vùng nhỏ ở bờ trống, không để vùng bao phủ xuyên qua vách/địa hình cao.
-Chưa tích hợp Bucket; khi làm sau này có thể mở rộng WaterSource mà không đổi PlayerStats.
+Hiện hỗ trợ một WaterBucket trong scene.
