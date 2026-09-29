@@ -17,46 +17,60 @@ public class PlayerStats : MonoBehaviour
     public float Hunger { get; private set; } = MaxStat;
     [field: SerializeField, Range(0f, MaxStat)]
     public float Thirst { get; private set; } = MaxStat;
+    public bool IsDead { get; private set; }
 
     private void Awake()
     {
         Health = Hunger = Thirst = MaxStat;
         OnValidate();
+        if (GetComponent<SurvivalGameOver>() == null)
+            gameObject.AddComponent<SurvivalGameOver>();
     }
 
     private void Update()
     {
+        if (IsDead) return;
+        if (Health <= 0f) { Die(); return; }
         float deltaTime = Time.deltaTime;
         Hunger = Mathf.Clamp(Hunger - hungerDrainPerSecond * deltaTime, 0f, MaxStat);
         Thirst = Mathf.Clamp(Thirst - thirstDrainPerSecond * deltaTime, 0f, MaxStat);
 
-        // Apply damage once, even when both hunger and thirst are empty.
-        if (Hunger <= 0f || Thirst <= 0f)
-            TakeDamage(healthDrainPerSecond * deltaTime);
+        int emptyNeeds = (Hunger <= 0f ? 1 : 0) + (Thirst <= 0f ? 1 : 0);
+        if (emptyNeeds > 0)
+            TakeDamage(healthDrainPerSecond * emptyNeeds * deltaTime);
     }
 
     public void AddHunger(float amount)
     {
-        if (IsValidAmount(amount))
+        if (!IsDead && IsValidAmount(amount))
             Hunger = Mathf.Clamp(Hunger + amount, 0f, MaxStat);
     }
 
     public void AddThirst(float amount)
     {
-        if (IsValidAmount(amount))
+        if (!IsDead && IsValidAmount(amount))
             Thirst = Mathf.Clamp(Thirst + amount, 0f, MaxStat);
     }
 
     public void Heal(float amount)
     {
-        if (IsValidAmount(amount))
+        if (!IsDead && IsValidAmount(amount))
             Health = Mathf.Clamp(Health + amount, 0f, MaxStat);
     }
 
     public void TakeDamage(float amount)
     {
-        if (IsValidAmount(amount))
+        if (!IsDead && IsValidAmount(amount))
+        {
             Health = Mathf.Clamp(Health - amount, 0f, MaxStat);
+            if (Health <= 0f) Die();
+        }
+    }
+
+    private void Die()
+    {
+        IsDead = true;
+        Time.timeScale = 0f;
     }
 
     private static bool IsValidAmount(float amount)

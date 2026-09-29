@@ -10162,8 +10162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebb66dbb0f14bd4c8253fee71c47aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingPot
-  requiredMushrooms: 3
-  hasWater: 1
+  requiredMushrooms: 2
+  hasWater: 0
   mushroomTag: Mushroom
   cookTime: 5
   pieChartUI: {fileID: 4901491691324846069}
