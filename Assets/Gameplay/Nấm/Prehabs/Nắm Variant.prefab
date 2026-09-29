@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "N\u1EAFm Variant"
       objectReference: {fileID: 0}
+    - target: {fileID: 8478516578253066499, guid: 6afab76f99cd4294294d8f4bc56a3ae5, type: 3}
+      propertyPath: m_TagString
+      value: Mushroom
+      objectReference: {fileID: 0}
     - target: {fileID: 9142990335557274553, guid: 6afab76f99cd4294294d8f4bc56a3ae5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3

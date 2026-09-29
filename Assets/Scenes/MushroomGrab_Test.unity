@@ -239,7 +239,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 25462630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6945a98c6fed3447bdf94a0e45d7287, type: 3}
+  m_Script: {fileID: 11500000, guid: 61913e070bc74a09834d42f75f073f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsUI
   playerStats: {fileID: 441087508}
@@ -3125,6 +3125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "N\u1EAFm"
       objectReference: {fileID: 0}
+    - target: {fileID: 5649099701926322645, guid: 36a7cffc25a537d4384964f583e5045a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3441,7 +3445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   woodPrefab: {fileID: 1355906279}
-  maxWoodOnMap: 50
+  maxWoodOnMap: 25
   spawnInterval: 0.5
   spawnAreaSize: {x: 73.3, y: 62.8}
   groundLayer:
