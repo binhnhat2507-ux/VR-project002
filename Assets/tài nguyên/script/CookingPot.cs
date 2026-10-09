@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
@@ -91,7 +90,7 @@ public class CookingPot : MonoBehaviour
                 if (currentCookTime >= Mathf.Max(0.1f, cookTime)) state = PotState.Done;
             }
             // One press performs exactly one action.
-            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+            if (SurvivalInput.UsePressed)
             {
                 if (IsReady) EatSoup();
                 else TryPourWater(bucket);
@@ -206,13 +205,13 @@ public class CookingPot : MonoBehaviour
             interactionText.transform.position = InteractionPosition + Vector3.up * promptHeight;
             interactionText.transform.rotation = playerHead.rotation;
         }
-        if (IsReady) interactionText.text = $"[E] An sup nam (+{hungerPerMeal:0} no)";
+        if (IsReady) interactionText.text = $"{SurvivalInput.UseHint} An sup nam (+{hungerPerMeal:0} no)";
         else if (state == PotState.Cooking)
             interactionText.text = $"Dang nau... {Mathf.CeilToInt(Mathf.Max(0f, cookTime - currentCookTime))}s";
         else
         {
             interactionText.text = $"Nam: {currentMushrooms}/{requiredMushrooms} | Nuoc: {(hasWater ? "1/1" : "0/1")}";
-            if (CanPourWater(bucket)) interactionText.text += "\n[E] Do nuoc vao noi";
+            if (CanPourWater(bucket)) interactionText.text += "\n" + SurvivalInput.UseHint + " Do nuoc vao noi";
         }
     }
 

@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 public class CookingPotWater : MonoBehaviour
@@ -28,10 +27,10 @@ public class CookingPotWater : MonoBehaviour
         if (interactionText != null)
         {
             interactionText.enabled = canPour;
-            if (canPour) interactionText.text = "[E] Do nuoc vao noi";
+            if (canPour) interactionText.text = SurvivalInput.UseHint + " Do nuoc vao noi";
         }
 
-        if (canPour && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        if (canPour && SurvivalInput.UsePressed)
             Pour();
     }
 

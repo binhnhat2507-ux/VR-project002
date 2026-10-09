@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 public class WaterSource : MonoBehaviour
@@ -43,14 +42,17 @@ public class WaterSource : MonoBehaviour
         {
             interactionText.enabled = nearby;
             if (nearby)
+            {
+                string message = drinkMessage.Replace("[E]", SurvivalInput.UseHint);
                 interactionText.text = bucket != null && bucket.IsHeld
-                    ? drinkMessage + " | " + (bucket.HasWater ? "Xo da day" : "[Y] Muc nuoc vao xo")
-                    : drinkMessage;
+                    ? message + " | " + (bucket.HasWater ? "Xo da day" : SurvivalInput.FillHint + " Muc nuoc vao xo")
+                    : message;
+            }
         }
 
-        if (!nearby || Keyboard.current == null) return;
-        if (Keyboard.current.eKey.wasPressedThisFrame) Drink();
-        if (Keyboard.current.yKey.wasPressedThisFrame) FillBucket();
+        if (!nearby) return;
+        if (SurvivalInput.UsePressed) Drink();
+        if (SurvivalInput.FillPressed) FillBucket();
     }
 
     public bool FillBucket()
